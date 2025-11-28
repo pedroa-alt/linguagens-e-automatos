@@ -6,9 +6,9 @@ public class PedidoLivro {
     // Enumeração que define todos os estados possíveis do DFA
     enum State { 
         SAUDACAO,           // Estado inicial, aguardando o comando para começar o pedido
-        ESCOLHER_LIVRO,     // Aguardando a escolha do sabor
-        ESCOLHER_VOLUME,   // Aguardando a escolha do tamanho da pizza
-        ESCOLHER_AUTOR,    // Aguardando a escolha da bebida (ou se é "sem")
+        ESCOLHER_LIVRO,     // Aguardando a escolha do livro
+        ESCOLHER_VOLUME,   // Aguardando a escolha do volume
+        ESCOLHER_AUTOR,    // Aguardando a escolha do autor (ou se é "sem")
         INFORMAR_ENDERECO,  // Aguardando o endereço e telefone
         CONFIRMAR,          // Aguardando a confirmação, alteração ou cancelamento
         PAGAMENTO,          // Aguardando o método de pagamento
@@ -50,7 +50,7 @@ public class PedidoLivro {
                     
                 // === ESTADO: ESCOLHER_LIVRO ===
                 case ESCOLHER_LIVRO:
-                    // Verifica qual dos sabores válidos foi mencionado na entrada
+                    // Verifica qual dos validos válidos foi mencionado na entrada
                     if (input.contains("narnia") || input.contains("senhor dos aneis") ||
                         input.contains("percy jackson") || input.contains("hobbit")) {
                         
@@ -92,8 +92,8 @@ public class PedidoLivro {
                     if (input.contains("sem")) {
                         autor = "sem autor";
                     } else {
-                        // Se não disse "sem", assume que a entrada é o nome da bebida.
-                        // Nota: Esta lógica é simples e assume que a entrada é a bebida.
+                        // Se não disse "sem", assume que a entrada é o nome do autor.
+                        // Nota: Esta lógica é simples e assume que a entrada é o autor.
                         autor = input.isEmpty() ? "sem autor" : input;
                     }
                     state = State.INFORMAR_ENDERECO; // Transição
